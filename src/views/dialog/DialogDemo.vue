@@ -2,7 +2,7 @@
     <div>
         <div class="content-section introduction">
             <div class="feature-intro">
-                <h1>Dialog</h1>
+                <h1>Dialog By Falimero</h1>
                 <p>Dialog is a container to display content in an overlay window.</p>
             </div>
         </div>
@@ -11,7 +11,7 @@
             <div class="card">
                 <h5>Basic</h5>
                 <Button label="Show" icon="pi pi-external-link" @click="openBasic" />
-                <Dialog header="Header" :visible.sync="displayBasic" :containerStyle="{width: '50vw'}">
+                <Dialog header="Header" :visible.sync="displayBasic" :containerStyle="{width: '50vw'}" append-to="body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
@@ -46,13 +46,29 @@
 
                 <h5>Modal</h5>
                 <Button label="Show" icon="pi pi-external-link" @click="openModal" />
-                <Dialog header="Header" :visible.sync="displayModal" :containerStyle="{width: '50vw'}" :modal="true">
-                    <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <Dialog header="Header" :visible.sync="displayModal" :containerStyle="{width: '20vw'}" :modal="true">
+                    <p class="m-0">Lorem ipsum dolor sit amet</p>
+                    <Button label="Show" icon="pi pi-external-link" @click="openModal2" />
+                    <Dialog header="Header" :visible.sync="displayModal2" :containerStyle="{width: '100vw'}" :modal="true">
+                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <template #footer>
+                            <Button label="No" icon="pi pi-times" @click="closeModal2" class="p-button-text"/>
+                            <Button label="Yes" icon="pi pi-check" @click="closeModal2" autofocus />
+                        </template>
+                    </Dialog>
                     <template #footer>
                         <Button label="No" icon="pi pi-times" @click="closeModal" class="p-button-text"/>
                         <Button label="Yes" icon="pi pi-check" @click="closeModal" autofocus />
+                    </template>
+                </Dialog>
+                <Button label="Show in body" icon="pi pi-external-link" @click="openModal3" />
+                <Dialog header="Header" :visible.sync="displayModal3" :containerStyle="{width: '20vw'}" :modal="true" append-to="body">
+                    <p class="m-0">Lorem ipsum dolor sit amet</p>
+                    <template #footer>
+                        <Button label="No" icon="pi pi-times" @click="closeModal3" class="p-button-text"/>
+                        <Button label="Yes" icon="pi pi-check" @click="closeModal3" autofocus />
                     </template>
                 </Dialog>
 
@@ -124,6 +140,8 @@ export default {
             displayBasic: false,
             displayBasic2: false,
             displayModal: false,
+            displayModal2: false,
+            displayModal3: false,
             displayConfirmation: false,
             displayMaximizable: false,
             displayPosition: false,
@@ -148,6 +166,18 @@ export default {
         },
         closeModal() {
             this.displayModal = false;
+        },
+        openModal2() {
+            this.displayModal2 = true;
+        },
+        closeModal2() {
+            this.displayModal2 = false;
+        },
+        openModal3() {
+            this.displayModal3 = true;
+        },
+        closeModal3() {
+            this.displayModal3 = false;
         },
         openConfirmation() {
             this.displayConfirmation = true;

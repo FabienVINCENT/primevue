@@ -237,17 +237,17 @@ export default {
         appendContainer() {
             if (this.appendTo) {
                 if (this.appendTo === 'body')
-                    document.body.appendChild(this.$refs.dialog);
+                    document.body.appendChild(this.$refs.mask);
                 else
-                    document.getElementById(this.appendTo).appendChild(this.$refs.dialog);
+                    document.getElementById(this.appendTo).appendChild(this.$refs.mask);
             }
         },
         restoreAppend() {
             if (this.$refs.overlay && this.appendTo) {
                 if (this.appendTo === 'body')
-                    document.body.removeChild(this.$refs.dialog);
+                    document.body.removeChild(this.$refs.mask);
                 else
-                    document.getElementById(this.appendTo).removeChild(this.$refs.dialog);
+                    document.getElementById(this.appendTo).removeChild(this.$refs.mask);
             }
         }
     },
